@@ -1,0 +1,163 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 82" fill="none" role="img" aria-label="InovAê.iA">
+  <defs>
+    <linearGradient id="gMark" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%"   stop-color="#6d28d9"/>
+      <stop offset="40%"  stop-color="#a855f7"/>
+      <stop offset="100%" stop-color="#06b6d4"/>
+    </linearGradient>
+    <linearGradient id="gCyan" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%"   stop-color="#22d3ee"/>
+      <stop offset="100%" stop-color="#06b6d4"/>
+    </linearGradient>
+    <linearGradient id="gInner" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%"   stop-color="#7c3aed" stop-opacity="0.12"/>
+      <stop offset="100%" stop-color="#06b6d4" stop-opacity="0.04"/>
+    </linearGradient>
+    <radialGradient id="gHalo" cx="50%" cy="50%" r="50%">
+      <stop offset="0%"   stop-color="#a855f7" stop-opacity="0.18"/>
+      <stop offset="100%" stop-color="#a855f7" stop-opacity="0"/>
+    </radialGradient>
+    <filter id="fGlow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="2.2" result="b"/>
+      <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    <filter id="fBrain" x="-30%" y="-30%" width="160%" height="160%">
+      <feGaussianBlur stdDeviation="1.5" result="b"/>
+      <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    <filter id="fText" x="-10%" y="-40%" width="120%" height="180%">
+      <feGaussianBlur stdDeviation="1.6" result="b"/>
+      <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+  </defs>
+
+  <!-- ============================================================
+       ÍCONE: Hexágono com cérebro neural no centro
+       Centro: (41, 41)
+  ============================================================ -->
+
+  <!-- Halo suave -->
+  <circle cx="41" cy="41" r="36" fill="url(#gHalo)"/>
+
+  <!-- Hexágono externo -->
+  <polygon
+    points="77,41 59,72 23,72 5,41 23,10 59,10"
+    stroke="url(#gMark)" stroke-width="1.6" fill="url(#gInner)" opacity="0.9"/>
+
+  <!-- Hexágono interno tracejado -->
+  <polygon
+    points="63,41 52,60 30,60 19,41 30,22 52,22"
+    stroke="url(#gMark)" stroke-width="0.7" fill="none" opacity="0.3"
+    stroke-dasharray="3 2"/>
+
+  <!-- Linhas de rede: vértices → centro -->
+  <g stroke="url(#gMark)" stroke-width="0.8" opacity="0.35">
+    <line x1="77" y1="41" x2="41" y2="41"/>
+    <line x1="59" y1="10" x2="41" y2="41"/>
+    <line x1="23" y1="10" x2="41" y2="41"/>
+    <line x1="5"  y1="41" x2="41" y2="41"/>
+    <line x1="23" y1="72" x2="41" y2="41"/>
+    <line x1="59" y1="72" x2="41" y2="41"/>
+  </g>
+
+  <!-- Nós nos vértices externos -->
+  <g fill="url(#gMark)" filter="url(#fGlow)">
+    <circle cx="77" cy="41" r="3"/>
+    <circle cx="59" cy="10" r="3"/>
+    <circle cx="23" cy="10" r="3"/>
+    <circle cx="5"  cy="41" r="3"/>
+    <circle cx="23" cy="72" r="3"/>
+    <circle cx="59" cy="72" r="3"/>
+  </g>
+
+  <!-- Nós nos vértices internos -->
+  <g fill="url(#gMark)" opacity="0.55">
+    <circle cx="63" cy="41" r="1.8"/>
+    <circle cx="52" cy="22" r="1.8"/>
+    <circle cx="30" cy="22" r="1.8"/>
+    <circle cx="19" cy="41" r="1.8"/>
+    <circle cx="30" cy="60" r="1.8"/>
+    <circle cx="52" cy="60" r="1.8"/>
+  </g>
+
+  <!-- ============================================================
+       CÉREBRO no centro do hexágono
+       Centralizado em (41, 40), ~28px wide, ~20px tall
+  ============================================================ -->
+
+  <!-- Preenchimento suave do cérebro -->
+  <path d="
+    M 41 31
+    C 39 29, 30 29, 28 33
+    C 26 37, 27 42, 30 44
+    C 32 47, 37 48, 41 47
+    C 45 48, 50 47, 52 44
+    C 55 42, 56 37, 54 33
+    C 52 29, 43 29, 41 31 Z
+  " fill="url(#gMark)" opacity="0.15"/>
+
+  <!-- Lobo esquerdo (outline) -->
+  <path d="
+    M 41 31
+    C 39 29, 30 29, 28 33
+    C 26 37, 27 42, 30 44
+    C 32 47, 37 48, 41 47
+  " stroke="url(#gMark)" stroke-width="1.5" stroke-linecap="round" fill="none" filter="url(#fBrain)"/>
+
+  <!-- Lobo direito (outline) -->
+  <path d="
+    M 41 31
+    C 43 29, 52 29, 54 33
+    C 56 37, 55 42, 52 44
+    C 50 47, 45 48, 41 47
+  " stroke="url(#gMark)" stroke-width="1.5" stroke-linecap="round" fill="none" filter="url(#fBrain)"/>
+
+  <!-- Divisão central -->
+  <line x1="41" y1="31" x2="41" y2="47"
+        stroke="url(#gCyan)" stroke-width="1" stroke-linecap="round" opacity="0.7"/>
+
+  <!-- Sulcos cerebrais esquerdo -->
+  <path d="M 30 36 C 32 34, 35 34, 37 36"
+        stroke="url(#gMark)" stroke-width="1" stroke-linecap="round" fill="none" opacity="0.8"/>
+  <path d="M 29 41 C 31 39, 34 39, 36 41"
+        stroke="url(#gMark)" stroke-width="1" stroke-linecap="round" fill="none" opacity="0.8"/>
+
+  <!-- Sulcos cerebrais direito -->
+  <path d="M 45 36 C 47 34, 50 34, 52 36"
+        stroke="url(#gMark)" stroke-width="1" stroke-linecap="round" fill="none" opacity="0.8"/>
+  <path d="M 46 41 C 48 39, 51 39, 53 41"
+        stroke="url(#gMark)" stroke-width="1" stroke-linecap="round" fill="none" opacity="0.8"/>
+
+  <!-- Tronco neural (haste abaixo do cérebro) -->
+  <path d="M 41 47 C 41 50, 41 52, 41 54"
+        stroke="url(#gCyan)" stroke-width="1.8" stroke-linecap="round" fill="none" filter="url(#fBrain)"/>
+
+  <!-- Nó ciano brilhante no topo (conexão entre os dois lobos) -->
+  <circle cx="41" cy="31" r="2.8" fill="#22d3ee" filter="url(#fGlow)" opacity="0.9"/>
+  <circle cx="41" cy="31" r="1.5" fill="#a5f3fc"/>
+
+  <!-- ============================================================
+       TEXTO: InovAê.iA
+  ============================================================ -->
+
+  <text x="96" y="56"
+        font-family="'Space Grotesk','Inter',Arial,sans-serif"
+        font-size="34" font-weight="300" letter-spacing="-0.5"
+        fill="#ddd8f8">Inov</text>
+
+  <text x="155" y="56"
+        font-family="'Space Grotesk','Inter',Arial,sans-serif"
+        font-size="34" font-weight="700" letter-spacing="-0.5"
+        fill="url(#gCyan)" filter="url(#fText)">Aê.</text>
+
+  <text x="207" y="56"
+        font-family="'Space Grotesk','Inter',Arial,sans-serif"
+        font-size="34" font-weight="300" letter-spacing="-0.5"
+        fill="#ddd8f8">i</text>
+
+  <text x="222" y="56"
+        font-family="'Space Grotesk','Inter',Arial,sans-serif"
+        font-size="34" font-weight="700" letter-spacing="-0.5"
+        fill="url(#gCyan)" filter="url(#fText)">A</text>
+
+</svg>

@@ -1,0 +1,144 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 280 80" fill="none" role="img" aria-label="InovAê.iA logo">
+  <defs>
+    <!-- Gradient for brain mesh: purple top-left → cyan bottom-right -->
+    <linearGradient id="brainGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%"  stop-color="#7c3aed"/>
+      <stop offset="35%" stop-color="#a855f7"/>
+      <stop offset="70%" stop-color="#38bdf8"/>
+      <stop offset="100%" stop-color="#06b6d4"/>
+    </linearGradient>
+    <!-- Stem gradient -->
+    <linearGradient id="stemGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%"  stop-color="#a855f7"/>
+      <stop offset="100%" stop-color="#22d3ee"/>
+    </linearGradient>
+    <!-- Cyan glow filter for nodes and text -->
+    <filter id="cyanGlow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="2.5" result="blur"/>
+      <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    <!-- Subtle glow for text -->
+    <filter id="textGlow" x="-20%" y="-50%" width="140%" height="200%">
+      <feGaussianBlur stdDeviation="2" result="blur"/>
+      <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    <!-- Node glow -->
+    <filter id="nodeGlow" x="-100%" y="-100%" width="300%" height="300%">
+      <feGaussianBlur stdDeviation="3" result="blur"/>
+      <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+  </defs>
+
+  <!-- ====== BRAIN MESH NETWORK ====== -->
+  <!-- EDGES — stroke with brain gradient -->
+  <g stroke="url(#brainGrad)" stroke-width="1.3" stroke-linecap="round" opacity="0.88">
+    <!-- Row 0 → Row 1 -->
+    <line x1="33" y1="3"  x2="22" y2="12"/>
+    <line x1="33" y1="3"  x2="33" y2="10"/>
+    <line x1="33" y1="3"  x2="44" y2="12"/>
+    <!-- Row 1 → Row 2 -->
+    <line x1="22" y1="12" x2="13" y2="22"/>
+    <line x1="22" y1="12" x2="27" y2="20"/>
+    <line x1="33" y1="10" x2="27" y2="20"/>
+    <line x1="33" y1="10" x2="33" y2="22"/>
+    <line x1="33" y1="10" x2="39" y2="20"/>
+    <line x1="44" y1="12" x2="39" y2="20"/>
+    <line x1="44" y1="12" x2="53" y2="22"/>
+    <!-- Row 2 → Row 3 -->
+    <line x1="13" y1="22" x2="8"  y2="33"/>
+    <line x1="13" y1="22" x2="19" y2="31"/>
+    <line x1="27" y1="20" x2="19" y2="31"/>
+    <line x1="27" y1="20" x2="28" y2="31"/>
+    <line x1="33" y1="22" x2="28" y2="31"/>
+    <line x1="33" y1="22" x2="33" y2="33"/>
+    <line x1="33" y1="22" x2="38" y2="31"/>
+    <line x1="39" y1="20" x2="38" y2="31"/>
+    <line x1="39" y1="20" x2="47" y2="31"/>
+    <line x1="53" y1="22" x2="47" y2="31"/>
+    <line x1="53" y1="22" x2="58" y2="33"/>
+    <!-- Row 3 → Row 4 -->
+    <line x1="8"  y1="33" x2="12" y2="43"/>
+    <line x1="19" y1="31" x2="12" y2="43"/>
+    <line x1="19" y1="31" x2="23" y2="42"/>
+    <line x1="28" y1="31" x2="23" y2="42"/>
+    <line x1="28" y1="31" x2="33" y2="43"/>
+    <line x1="33" y1="33" x2="33" y2="43"/>
+    <line x1="38" y1="31" x2="33" y2="43"/>
+    <line x1="38" y1="31" x2="43" y2="42"/>
+    <line x1="47" y1="31" x2="43" y2="42"/>
+    <line x1="47" y1="31" x2="54" y2="43"/>
+    <line x1="58" y1="33" x2="54" y2="43"/>
+    <!-- Horizontal connectors Row 2 -->
+    <line x1="13" y1="22" x2="27" y2="20"/>
+    <line x1="27" y1="20" x2="33" y2="22"/>
+    <line x1="33" y1="22" x2="39" y2="20"/>
+    <line x1="39" y1="20" x2="53" y2="22"/>
+    <!-- Horizontal connectors Row 3 -->
+    <line x1="8"  y1="33" x2="19" y2="31"/>
+    <line x1="19" y1="31" x2="28" y2="31"/>
+    <line x1="28" y1="31" x2="33" y2="33"/>
+    <line x1="33" y1="33" x2="38" y2="31"/>
+    <line x1="38" y1="31" x2="47" y2="31"/>
+    <line x1="47" y1="31" x2="58" y2="33"/>
+  </g>
+
+  <!-- NODES -->
+  <g fill="url(#brainGrad)">
+    <circle cx="33" cy="3"  r="3.2"/>
+    <circle cx="22" cy="12" r="2.8"/>
+    <circle cx="33" cy="10" r="2.8"/>
+    <circle cx="44" cy="12" r="2.8"/>
+    <circle cx="13" cy="22" r="2.4"/>
+    <circle cx="27" cy="20" r="2.4"/>
+    <circle cx="33" cy="22" r="2.4"/>
+    <circle cx="39" cy="20" r="2.4"/>
+    <circle cx="53" cy="22" r="2.4"/>
+    <circle cx="8"  cy="33" r="2.2"/>
+    <circle cx="19" cy="31" r="2.2"/>
+    <circle cx="28" cy="31" r="2.2"/>
+    <circle cx="33" cy="33" r="2.2"/>
+    <circle cx="38" cy="31" r="2.2"/>
+    <circle cx="47" cy="31" r="2.2"/>
+    <circle cx="58" cy="33" r="2.2"/>
+    <circle cx="12" cy="43" r="2.0"/>
+    <circle cx="23" cy="42" r="2.0"/>
+    <circle cx="33" cy="43" r="2.0"/>
+    <circle cx="43" cy="42" r="2.0"/>
+    <circle cx="54" cy="43" r="2.0"/>
+  </g>
+
+  <!-- CYAN CENTRAL NODE (brightest, with glow) -->
+  <circle cx="33" cy="22" r="5.5" fill="#22d3ee" filter="url(#nodeGlow)" opacity="0.9"/>
+  <circle cx="33" cy="22" r="3.5" fill="#67e8f9"/>
+
+  <!-- STEM: single organic curved line from base center downward -->
+  <path d="M33 45 C33 50 32 54 33 60 C34 64 34 67 33 70"
+        stroke="url(#stemGrad)" stroke-width="2.2" stroke-linecap="round" fill="none"
+        filter="url(#cyanGlow)" opacity="0.9"/>
+
+  <!-- ====== TEXT ====== -->
+  <!-- "Inov" — white/light weight -->
+  <text x="74" y="56"
+        font-family="'Space Grotesk', 'Inter', sans-serif"
+        font-size="34" font-weight="300" letter-spacing="-0.5"
+        fill="#ddd8f8">Inov</text>
+
+  <!-- "Aê." — cyan neon bold with glow -->
+  <text x="130" y="56"
+        font-family="'Space Grotesk', 'Inter', sans-serif"
+        font-size="34" font-weight="700" letter-spacing="-0.5"
+        fill="#22d3ee" filter="url(#textGlow)">Aê.</text>
+
+  <!-- "i" — white/light weight -->
+  <text x="180" y="56"
+        font-family="'Space Grotesk', 'Inter', sans-serif"
+        font-size="34" font-weight="300" letter-spacing="-0.5"
+        fill="#ddd8f8">i</text>
+
+  <!-- "A" — cyan neon bold with glow -->
+  <text x="196" y="56"
+        font-family="'Space Grotesk', 'Inter', sans-serif"
+        font-size="34" font-weight="700" letter-spacing="-0.5"
+        fill="#22d3ee" filter="url(#textGlow)">A</text>
+
+</svg>

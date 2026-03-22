@@ -1,0 +1,1010 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="inovae.ia - Agentes de Inteligência Artificial que automatizam atendimento, vendas e operações para sua empresa." />
+  <meta name="keywords" content="inteligência artificial, automação empresarial, agentes de IA, chatbot, atendimento automático" />
+  <title>inovae.ia | Agentes de IA para sua Empresa</title>
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet" />
+
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css" />
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+
+  <!-- Filtro SVG para remover fundo escuro da logo PNG -->
+  <svg style="display:none" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+      <filter id="logo-luma-key" color-interpolation-filters="sRGB">
+        <!-- Pixels escuros/cinza → transparentes; neon glow → opaco -->
+        <feColorMatrix type="matrix"
+          values="1 0 0 0 0
+                  0 1 0 0 0
+                  0 0 1 0 0
+                  2 2 2 0 -1.4"/>
+      </filter>
+    </defs>
+  </svg>
+
+  <!-- ========== CURSOR CUSTOMIZADO ========== -->
+  <div class="cursor-dot"></div>
+  <div class="cursor-outline"></div>
+
+  <!-- ========== PARTÍCULAS DE FUNDO ========== -->
+  <canvas id="particles-canvas"></canvas>
+
+  <!-- ========== NAVBAR ========== -->
+  <nav class="navbar" id="navbar">
+    <div class="nav-container">
+      <a href="#hero" class="nav-logo nav-logo--png" aria-label="InovAê.iA">
+        <img src="images/logo-branca.png" alt="InovAê.iA" class="logo-png logo-png--nav" />
+      </a>
+      <ul class="nav-links" id="nav-links">
+        <li><a href="#hero" class="nav-link">Início</a></li>
+        <li><a href="#comparativo" class="nav-link">Comparativo</a></li>
+        <li><a href="#problem" class="nav-link">Estatísticas</a></li>
+        <li><a href="#services" class="nav-link">Serviços</a></li>
+        <li><a href="#benefits" class="nav-link">Benefícios</a></li>
+        <li><a href="#diferencial" class="nav-link">Diferencial</a></li>
+        <li><a href="#cta-final" class="nav-cta-btn">Falar com Especialista</a></li>
+      </ul>
+      <button class="hamburger" id="hamburger" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- ========== HERO ========== -->
+  <section id="hero" class="hero-section">
+    <div class="hero-bg-gradient"></div>
+    <div class="hero-orb hero-orb-1"></div>
+    <div class="hero-orb hero-orb-2"></div>
+    <div class="hero-orb hero-orb-3"></div>
+
+    <div class="hero-container">
+      <div class="hero-content" data-aos="fade-right">
+        <div class="hero-badge">
+          <span class="badge-dot"></span>
+          <span>Automação com IA · Nova Geração</span>
+        </div>
+        <h1 class="hero-title">
+          Pare de perder clientes<br />
+          <span class="gradient-text">por demora no<br />atendimento.</span>
+        </h1>
+        <p class="hero-subtitle">
+          A <strong>inovae.ia</strong> cria agentes de Inteligência Artificial que automatizam atendimento, vendas e operações para sua empresa.
+        </p>
+        <p class="hero-description">
+          Transforme a forma como sua empresa atende clientes. Automatize respostas, qualifique leads e agende reuniões automaticamente com agentes de IA que trabalham <strong>24 horas por dia.</strong>
+        </p>
+        <div class="hero-actions">
+          <a href="#cta-final" class="btn-primary">
+            <span>Automatizar minha empresa</span>
+            <i class="fas fa-arrow-right"></i>
+          </a>
+          <a href="#services" class="btn-secondary">
+            <i class="fas fa-play-circle"></i>
+            <span>Ver soluções</span>
+          </a>
+        </div>
+        <div class="hero-trust">
+          <div class="trust-item">
+            <i class="fas fa-check-circle"></i>
+            <span>Atendimento 24/7</span>
+          </div>
+          <div class="trust-item">
+            <i class="fas fa-check-circle"></i>
+            <span>Integração rápida</span>
+          </div>
+          <div class="trust-item">
+            <i class="fas fa-check-circle"></i>
+            <span>IA personalizada</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="hero-visual" data-aos="fade-left">
+        <div class="phone-mockup">
+          <div class="phone-frame">
+            <div class="phone-screen">
+              <div class="phone-header">
+                <div class="phone-avatar">
+                  <i class="fas fa-robot"></i>
+                </div>
+                <div class="phone-info">
+                  <span class="phone-name">Agente IA · inovae.ia</span>
+                  <span class="phone-status"><span class="status-dot"></span> Online agora</span>
+                </div>
+              </div>
+              <div class="chat-messages" id="chat-messages">
+                <div class="msg msg-in">
+                  <span>Olá! Como posso ajudar? 😊</span>
+                  <time>09:00</time>
+                </div>
+                <div class="msg msg-out">
+                  <span>Quero saber mais sobre os planos</span>
+                  <time>09:01</time>
+                </div>
+                <div class="msg msg-in typing" id="typing-indicator">
+                  <span class="typing-dots"><span></span><span></span><span></span></span>
+                </div>
+                <div class="msg msg-in hidden" id="msg-response-1">
+                  <span>Claro! Temos soluções personalizadas para cada empresa. Qual seu segmento? 🚀</span>
+                  <time>09:01</time>
+                </div>
+                <div class="msg msg-out hidden" id="msg-response-2">
+                  <span>Sou do setor de saúde</span>
+                  <time>09:02</time>
+                </div>
+                <div class="msg msg-in hidden" id="msg-response-3">
+                  <span>Perfeito! Já ajudamos clínicas a aumentar agendamentos em até 3x com IA 💜</span>
+                  <time>09:02</time>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Notificações flutuantes -->
+          <div class="notif notif-whatsapp" id="notif-1">
+            <div class="notif-icon"><i class="fab fa-whatsapp"></i></div>
+            <div class="notif-text">
+              <strong>WhatsApp</strong>
+              <span>Novo lead: Maria Silva</span>
+            </div>
+          </div>
+          <div class="notif notif-instagram" id="notif-2">
+            <div class="notif-icon"><i class="fab fa-instagram"></i></div>
+            <div class="notif-text">
+              <strong>Instagram</strong>
+              <span>3 mensagens respondidas</span>
+            </div>
+          </div>
+          <div class="notif notif-telegram" id="notif-3">
+            <div class="notif-icon"><i class="fab fa-telegram"></i></div>
+            <div class="notif-text">
+              <strong>Telegram</strong>
+              <span>Agendamento confirmado</span>
+            </div>
+          </div>
+          <div class="notif notif-email" id="notif-4">
+            <div class="notif-icon"><i class="fas fa-envelope"></i></div>
+            <div class="notif-text">
+              <strong>E-mail</strong>
+              <span>Proposta enviada automaticamente</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Scroll indicator -->
+    <div class="scroll-indicator">
+      <div class="scroll-line"></div>
+      <span>Role para baixo</span>
+    </div>
+  </section>
+
+  <!-- ========== VIDEO COMPARISON ========== -->
+  <section id="comparativo" class="video-comparison-section">
+    <div class="vc-bg-glow vc-bg-glow--left"></div>
+    <div class="vc-bg-glow vc-bg-glow--right"></div>
+    <div class="container">
+
+      <!-- Header -->
+      <div class="vc-header" data-aos="fade-up">
+        <div class="section-label">Veja a diferença na prática</div>
+        <h2 class="section-title text-center">
+          Dois atendimentos.<br />
+          <span class="gradient-text">Resultados completamente opostos.</span>
+        </h2>
+        <p class="section-subtitle text-center">
+          Assista e compare como o atendimento humano sobrecarregado afeta sua empresa — e como a IA transforma cada interação em uma experiência memorável.
+        </p>
+      </div>
+
+      <!-- Toggle Tabs -->
+      <div class="vc-tabs" data-aos="fade-up" data-aos-delay="150">
+        <button class="vc-tab vc-tab--bad active" id="tab-bad" aria-pressed="true">
+          <span class="vc-tab-icon"><i class="fas fa-times-circle"></i></span>
+          <span class="vc-tab-label">
+            <strong>Sem IA</strong>
+            <small>Atendimento Frustrante</small>
+          </span>
+        </button>
+        <div class="vc-tab-divider">
+          <span class="vc-vs">VS</span>
+        </div>
+        <button class="vc-tab vc-tab--good" id="tab-good" aria-pressed="false">
+          <span class="vc-tab-icon"><i class="fas fa-check-circle"></i></span>
+          <span class="vc-tab-label">
+            <strong>Com IA</strong>
+            <small>Atendimento Automatizado</small>
+          </span>
+        </button>
+      </div>
+
+      <!-- Video Stage -->
+      <div class="vc-stage" data-aos="zoom-in" data-aos-delay="200">
+
+        <!-- === VIDEO CARD BAD === -->
+        <div class="vc-card vc-card--bad active" id="video-card-bad">
+          <div class="vc-card-header">
+            <div class="vc-card-status vc-card-status--bad">
+              <i class="fas fa-exclamation-circle"></i>
+              <span>Atendimento Frustrante</span>
+            </div>
+            <div class="vc-card-tag">Sem automação</div>
+          </div>
+
+          <div class="vc-video-wrapper">
+            <video
+              class="vc-video"
+              id="video-bad"
+              preload="metadata"
+              playsinline
+              webkit-playsinline
+              poster=""
+            >
+              <source src="https://www.genspark.ai/api/files/s/A3dxTubt" type="video/mp4" />
+              Seu navegador não suporta vídeo HTML5.
+            </video>
+            <div class="vc-video-overlay" id="overlay-bad">
+              <button class="vc-play-btn" id="play-bad" aria-label="Assistir vídeo">
+                <div class="vc-play-icon">
+                  <i class="fas fa-play"></i>
+                </div>
+                <span>Assistir agora</span>
+              </button>
+            </div>
+            <div class="vc-video-badge vc-video-badge--bad">
+              <i class="fas fa-user-clock"></i> Atendente sobrecarregado
+            </div>
+          </div>
+
+          <div class="vc-card-body">
+            <h3 class="vc-card-title">
+              <i class="fas fa-frown"></i>
+              O custo do atendimento lento
+            </h3>
+            <p class="vc-card-desc">
+              Um colaborador sobrecarregado não consegue atender todos os clientes em tempo hábil. O resultado? Clientes frustrados, oportunidades perdidas e uma reputação comprometida.
+            </p>
+            <ul class="vc-card-points vc-card-points--bad">
+              <li><i class="fas fa-times"></i> Resposta demorada ou sem resposta</li>
+              <li><i class="fas fa-times"></i> Cliente irritado e insatisfeito</li>
+              <li><i class="fas fa-times"></i> Perda de vendas e oportunidades</li>
+              <li><i class="fas fa-times"></i> Equipe esgotada e improdutiva</li>
+            </ul>
+            <div class="vc-card-stat">
+              <div class="vc-stat-item">
+                <span class="vc-stat-number vc-stat-number--bad">43%</span>
+                <span class="vc-stat-label">dos clientes abandonam por demora</span>
+              </div>
+              <div class="vc-stat-item">
+                <span class="vc-stat-number vc-stat-number--bad">3x</span>
+                <span class="vc-stat-label">mais chance de perder o cliente</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- === VIDEO CARD GOOD === -->
+        <div class="vc-card vc-card--good" id="video-card-good">
+          <div class="vc-card-header">
+            <div class="vc-card-status vc-card-status--good">
+              <i class="fas fa-check-circle"></i>
+              <span>Atendimento Automatizado</span>
+            </div>
+            <div class="vc-card-tag vc-card-tag--good">Com IA inovae.ia</div>
+          </div>
+
+          <div class="vc-video-wrapper">
+            <video
+              class="vc-video"
+              id="video-good"
+              preload="metadata"
+              playsinline
+              webkit-playsinline
+            >
+              <source src="https://www.genspark.ai/api/files/s/SHvegOnV" type="video/mp4" />
+              Seu navegador não suporta vídeo HTML5.
+            </video>
+            <div class="vc-video-overlay" id="overlay-good">
+              <button class="vc-play-btn vc-play-btn--good" id="play-good" aria-label="Assistir vídeo">
+                <div class="vc-play-icon vc-play-icon--good">
+                  <i class="fas fa-play"></i>
+                </div>
+                <span>Assistir agora</span>
+              </button>
+            </div>
+            <div class="vc-video-badge vc-video-badge--good">
+              <i class="fas fa-robot"></i> Agente IA 24/7
+            </div>
+          </div>
+
+          <div class="vc-card-body">
+            <h3 class="vc-card-title vc-card-title--good">
+              <i class="fas fa-smile-beam"></i>
+              A excelência do atendimento com IA
+            </h3>
+            <p class="vc-card-desc">
+              Com um Agente de IA da inovae.ia, cada cliente é atendido imediatamente, com precisão e cordialidade — 24 horas por dia, superando expectativas e fechando mais vendas.
+            </p>
+            <ul class="vc-card-points vc-card-points--good">
+              <li><i class="fas fa-check"></i> Resposta instantânea, sem espera</li>
+              <li><i class="fas fa-check"></i> Cliente satisfeito e fidelizado</li>
+              <li><i class="fas fa-check"></i> Mais vendas e conversões</li>
+              <li><i class="fas fa-check"></i> Equipe livre para o que importa</li>
+            </ul>
+            <div class="vc-card-stat">
+              <div class="vc-stat-item">
+                <span class="vc-stat-number vc-stat-number--good">74%</span>
+                <span class="vc-stat-label">mais satisfação do cliente</span>
+              </div>
+              <div class="vc-stat-item">
+                <span class="vc-stat-number vc-stat-number--good">24/7</span>
+                <span class="vc-stat-label">disponibilidade total</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+      <!-- /vc-stage -->
+
+      <!-- Bottom CTA -->
+      <div class="vc-bottom-cta" data-aos="fade-up" data-aos-delay="100">
+        <div class="vc-cta-text">
+          <i class="fas fa-lightbulb"></i>
+          <span>Sua empresa ainda depende apenas de atendimento humano?</span>
+        </div>
+        <a href="#cta-final" class="btn-primary">
+          <span>Quero mudar isso agora</span>
+          <i class="fas fa-arrow-right"></i>
+        </a>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ========== PROBLEM ========== -->
+  <section id="problem" class="problem-section">
+    <div class="section-glow section-glow-left"></div>
+    <div class="container">
+      <div class="section-label" data-aos="fade-up">O Problema</div>
+      <h2 class="section-title" data-aos="fade-up" data-aos-delay="100">
+        Não deixe seus clientes<br /><span class="gradient-text">esperando</span>
+      </h2>
+      <p class="section-subtitle" data-aos="fade-up" data-aos-delay="150">
+        Empresas que respondem rápido vendem mais. Quando um cliente precisa esperar, a chance de abandono aumenta drasticamente.
+      </p>
+
+      <div class="stats-grid" data-aos="fade-up" data-aos-delay="200">
+        <div class="stat-card" data-value="68">
+          <div class="stat-icon"><i class="fas fa-chart-line"></i></div>
+          <div class="stat-number">
+            <span class="counter" data-target="68">0</span>%
+          </div>
+          <p class="stat-text">Mais chances de fechar uma venda quando o atendimento é rápido</p>
+          <div class="stat-bar"><div class="stat-bar-fill" style="--width: 68%"></div></div>
+        </div>
+        <div class="stat-card" data-value="74">
+          <div class="stat-icon"><i class="fas fa-smile"></i></div>
+          <div class="stat-number">
+            <span class="counter" data-target="74">0</span>%
+          </div>
+          <p class="stat-text">Melhoria na experiência do cliente com respostas imediatas</p>
+          <div class="stat-bar"><div class="stat-bar-fill" style="--width: 74%"></div></div>
+        </div>
+        <div class="stat-card" data-value="43">
+          <div class="stat-icon"><i class="fas fa-user-times"></i></div>
+          <div class="stat-number">
+            <span class="counter" data-target="43">0</span>%
+          </div>
+          <p class="stat-text">Dos usuários abandonam empresas por demora no atendimento</p>
+          <div class="stat-bar"><div class="stat-bar-fill" style="--width: 43%"></div></div>
+        </div>
+        <div class="stat-card" data-value="22">
+          <div class="stat-icon"><i class="fas fa-robot"></i></div>
+          <div class="stat-number">
+            <span class="counter" data-target="22">0</span>%
+          </div>
+          <p class="stat-text">Das empresas já utilizam IA para suporte e atendimento</p>
+          <div class="stat-bar"><div class="stat-bar-fill" style="--width: 22%"></div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== SERVICES ========== -->
+  <section id="services" class="services-section">
+    <div class="section-glow section-glow-right"></div>
+    <div class="container">
+      <div class="section-label" data-aos="fade-up">Nossos Serviços</div>
+      <h2 class="section-title" data-aos="fade-up" data-aos-delay="100">
+        Soluções de IA da<br /><span class="gradient-text">inovae.ia</span>
+      </h2>
+
+      <div class="services-grid">
+
+        <!-- Card 1 -->
+        <div class="service-card" data-aos="fade-up" data-aos-delay="100">
+          <div class="card-glow"></div>
+          <div class="service-icon-wrap">
+            <div class="service-icon">
+              <i class="fas fa-user-tie"></i>
+            </div>
+          </div>
+          <div class="service-tag">Vendas</div>
+          <h3 class="service-title">Agente de Vendas</h3>
+          <p class="service-desc">
+            Um vendedor digital que responde leads automaticamente, qualifica oportunidades, contorna objeções e agenda reuniões com inteligência.
+          </p>
+          <ul class="service-features">
+            <li><i class="fas fa-check"></i> Qualificação automática de leads</li>
+            <li><i class="fas fa-check"></i> Agendamento de reuniões</li>
+            <li><i class="fas fa-check"></i> Gestão de objeções com IA</li>
+          </ul>
+          <a href="#cta-final" class="card-link">
+            Saiba mais <i class="fas fa-arrow-right"></i>
+          </a>
+        </div>
+
+        <!-- Card 2 -->
+        <div class="service-card service-card--featured" data-aos="fade-up" data-aos-delay="200">
+          <div class="card-glow"></div>
+          <div class="featured-badge">Popular</div>
+          <div class="service-icon-wrap">
+            <div class="service-icon">
+              <i class="fas fa-calendar-check"></i>
+            </div>
+          </div>
+          <div class="service-tag">Agendamento</div>
+          <h3 class="service-title">Agente de Agendamento</h3>
+          <p class="service-desc">
+            Gerencie compromissos automaticamente, organizando agendas e garantindo que cada cliente seja atendido no momento certo.
+          </p>
+          <ul class="service-features">
+            <li><i class="fas fa-check"></i> Agenda inteligente 24/7</li>
+            <li><i class="fas fa-check"></i> Confirmações automáticas</li>
+            <li><i class="fas fa-check"></i> Redução de no-shows</li>
+          </ul>
+          <a href="#cta-final" class="card-link">
+            Saiba mais <i class="fas fa-arrow-right"></i>
+          </a>
+        </div>
+
+        <!-- Card 3 -->
+        <div class="service-card" data-aos="fade-up" data-aos-delay="300">
+          <div class="card-glow"></div>
+          <div class="service-icon-wrap">
+            <div class="service-icon">
+              <i class="fas fa-headset"></i>
+            </div>
+          </div>
+          <div class="service-tag">Suporte</div>
+          <h3 class="service-title">Agente de Suporte</h3>
+          <p class="service-desc">
+            Atendimento automático 24 horas por dia que responde dúvidas, resolve solicitações e encaminha casos complexos para sua equipe.
+          </p>
+          <ul class="service-features">
+            <li><i class="fas fa-check"></i> Respostas instantâneas</li>
+            <li><i class="fas fa-check"></i> Escalonamento inteligente</li>
+            <li><i class="fas fa-check"></i> Base de conhecimento ativa</li>
+          </ul>
+          <a href="#cta-final" class="card-link">
+            Saiba mais <i class="fas fa-arrow-right"></i>
+          </a>
+        </div>
+
+        <!-- Card 4 -->
+        <div class="service-card" data-aos="fade-up" data-aos-delay="400">
+          <div class="card-glow"></div>
+          <div class="service-icon-wrap">
+            <div class="service-icon">
+              <i class="fas fa-bullseye"></i>
+            </div>
+          </div>
+          <div class="service-tag">Conversão</div>
+          <h3 class="service-title">Agente de Atendimento ao Cliente</h3>
+          <p class="service-desc">
+            Identifica clientes com maior intenção de compra e otimiza o funil de vendas, aumentando conversões de forma inteligente.
+          </p>
+          <ul class="service-features">
+            <li><i class="fas fa-check"></i> Score de intenção de compra</li>
+            <li><i class="fas fa-check"></i> Otimização do funil</li>
+            <li><i class="fas fa-check"></i> Análise comportamental</li>
+          </ul>
+          <a href="#cta-final" class="card-link">
+            Saiba mais <i class="fas fa-arrow-right"></i>
+          </a>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== BENEFITS ========== -->
+  <section id="benefits" class="benefits-section">
+    <div class="container">
+      <div class="benefits-wrapper">
+        <div class="benefits-left" data-aos="fade-right">
+          <div class="section-label">Benefícios</div>
+          <h2 class="section-title">
+            Equipe de atendimento<br /><span class="gradient-text">sobrecarregada?</span>
+          </h2>
+          <p class="section-subtitle">
+            Delegue tarefas repetitivas para agentes de IA que trabalham continuamente atendendo clientes, organizando informações e executando processos com precisão.
+          </p>
+
+          <ul class="benefits-list">
+            <li class="benefit-item" data-aos="fade-right" data-aos-delay="100">
+              <div class="benefit-check"><i class="fas fa-check"></i></div>
+              <div class="benefit-content">
+                <strong>Atendimento automático 24/7</strong>
+                <span>Seus clientes sempre recebem respostas, sem espera</span>
+              </div>
+            </li>
+            <li class="benefit-item" data-aos="fade-right" data-aos-delay="150">
+              <div class="benefit-check"><i class="fas fa-check"></i></div>
+              <div class="benefit-content">
+                <strong>Resposta imediata aos clientes</strong>
+                <span>Zero tempo de espera, máxima satisfação</span>
+              </div>
+            </li>
+            <li class="benefit-item" data-aos="fade-right" data-aos-delay="200">
+              <div class="benefit-check"><i class="fas fa-check"></i></div>
+              <div class="benefit-content">
+                <strong>Aumento da conversão de vendas</strong>
+                <span>Mais leads qualificados e oportunidades fechadas</span>
+              </div>
+            </li>
+            <li class="benefit-item" data-aos="fade-right" data-aos-delay="250">
+              <div class="benefit-check"><i class="fas fa-check"></i></div>
+              <div class="benefit-content">
+                <strong>Redução da carga operacional</strong>
+                <span>Sua equipe foca no que realmente importa</span>
+              </div>
+            </li>
+            <li class="benefit-item" data-aos="fade-right" data-aos-delay="300">
+              <div class="benefit-check"><i class="fas fa-check"></i></div>
+              <div class="benefit-content">
+                <strong>Automação de tarefas repetitivas</strong>
+                <span>Processos executados com precisão e consistência</span>
+              </div>
+            </li>
+            <li class="benefit-item" data-aos="fade-right" data-aos-delay="350">
+              <div class="benefit-check"><i class="fas fa-check"></i></div>
+              <div class="benefit-content">
+                <strong>Integração com sistemas e plataformas</strong>
+                <span>WhatsApp, Instagram, CRM, e-mail e muito mais</span>
+              </div>
+            </li>
+          </ul>
+          <a href="#cta-final" class="btn-primary mt-btn">
+            <span>Quero saber mais</span>
+            <i class="fas fa-arrow-right"></i>
+          </a>
+        </div>
+
+        <div class="benefits-right" data-aos="fade-left">
+          <div class="benefits-visual">
+            <div class="bv-ring bv-ring-1"></div>
+            <div class="bv-ring bv-ring-2"></div>
+            <div class="bv-ring bv-ring-3"></div>
+            <div class="bv-center">
+              <i class="fas fa-robot"></i>
+              <span>IA Ativa</span>
+            </div>
+            <!-- Orbiting icons -->
+            <div class="orbit-item orbit-1">
+              <div class="orbit-icon"><i class="fab fa-whatsapp"></i></div>
+            </div>
+            <div class="orbit-item orbit-2">
+              <div class="orbit-icon"><i class="fab fa-instagram"></i></div>
+            </div>
+            <div class="orbit-item orbit-3">
+              <div class="orbit-icon"><i class="fas fa-envelope"></i></div>
+            </div>
+            <div class="orbit-item orbit-4">
+              <div class="orbit-icon"><i class="fab fa-telegram"></i></div>
+            </div>
+            <div class="orbit-item orbit-5">
+              <div class="orbit-icon"><i class="fas fa-phone"></i></div>
+            </div>
+            <div class="orbit-item orbit-6">
+              <div class="orbit-icon"><i class="fas fa-comment-dots"></i></div>
+            </div>
+
+            <!-- Stats flutuantes -->
+            <div class="float-stat float-stat-1" data-aos="fade-up" data-aos-delay="400">
+              <div class="fs-icon"><i class="fas fa-bolt"></i></div>
+              <div class="fs-data">
+                <strong>3x mais rápido</strong>
+                <span>Atendimento</span>
+              </div>
+            </div>
+            <div class="float-stat float-stat-2" data-aos="fade-up" data-aos-delay="500">
+              <div class="fs-icon"><i class="fas fa-chart-line"></i></div>
+              <div class="fs-data">
+                <strong>+68% vendas</strong>
+                <span>Conversão</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== DIFERENCIAL ========== -->
+  <section id="diferencial" class="diferencial-section">
+    <div class="section-glow section-glow-center"></div>
+    <div class="container">
+
+      <!-- Header -->
+      <div class="dif-header" data-aos="fade-up">
+        <div class="section-label">Serviço de Sites</div>
+        <h2 class="section-title text-center" data-aos="fade-up" data-aos-delay="100">
+          Sites com cara de agência.<br />
+          <span class="gradient-text">Entregues em até 72h.</span>
+        </h2>
+        <p class="section-subtitle text-center" data-aos="fade-up" data-aos-delay="150">
+          Chega de sites que parecem todos iguais. Criamos a identidade digital da sua empresa com design único, animações profissionais e performance máxima — usando IA de forma estratégica.
+        </p>
+      </div>
+
+      <!-- Cards Grid -->
+      <div class="diferencial-grid">
+
+        <div class="dif-card" data-aos="fade-up" data-aos-delay="100">
+          <div class="dif-number">01</div>
+          <div class="dif-icon"><i class="fas fa-fingerprint"></i></div>
+          <h3>Design Exclusivo</h3>
+          <p>Nada de templates genéricos. Cada site é criado a partir do DNA visual da sua marca.</p>
+        </div>
+
+        <div class="dif-card" data-aos="fade-up" data-aos-delay="200">
+          <div class="dif-number">02</div>
+          <div class="dif-icon"><i class="fas fa-film"></i></div>
+          <h3>Animações Profissionais</h3>
+          <p>Elementos que ganham vida no scroll, criando uma experiência memorável para seu visitante.</p>
+        </div>
+
+        <div class="dif-card" data-aos="fade-up" data-aos-delay="300">
+          <div class="dif-number">03</div>
+          <div class="dif-icon"><i class="fas fa-rocket"></i></div>
+          <h3>Entrega Rápida</h3>
+          <p>Do briefing ao site publicado em até 48 horas. Sem enrolação.</p>
+          <div class="dif-badge">
+            <i class="fas fa-bolt"></i> até 48h
+          </div>
+        </div>
+
+        <div class="dif-card" data-aos="fade-up" data-aos-delay="100">
+          <div class="dif-number">04</div>
+          <div class="dif-icon"><i class="fas fa-funnel-dollar"></i></div>
+          <h3>Otimizado para Converter</h3>
+          <p>Estrutura pensada para transformar visitantes em clientes desde o primeiro acesso.</p>
+        </div>
+
+        <div class="dif-card" data-aos="fade-up" data-aos-delay="200">
+          <div class="dif-number">05</div>
+          <div class="dif-icon"><i class="fas fa-mobile-alt"></i></div>
+          <h3>Mobile Perfeito</h3>
+          <p>Experiência impecável em qualquer dispositivo — celular, tablet ou desktop.</p>
+        </div>
+
+        <div class="dif-card dif-card--highlight" data-aos="fade-up" data-aos-delay="300">
+          <div class="dif-number">06</div>
+          <div class="dif-icon"><i class="fas fa-robot"></i></div>
+          <h3>IA Integrada</h3>
+          <p>Seu site já sai com agente de atendimento pronto para capturar e qualificar leads automaticamente.</p>
+          <div class="dif-badge dif-badge--neon">
+            <i class="fas fa-star"></i> Incluso
+          </div>
+        </div>
+
+      </div>
+      <!-- /diferencial-grid -->
+
+      <!-- CTA da seção -->
+      <div class="dif-cta-row" data-aos="fade-up" data-aos-delay="150">
+        <div class="dif-cta-text">
+          <i class="fas fa-lightbulb"></i>
+          <span>Quer ver como ficaria o site da sua empresa?</span>
+        </div>
+        <a href="#cta-final" class="btn-primary">
+          <span>Quero meu site assim</span>
+          <i class="fas fa-arrow-right"></i>
+        </a>
+      </div>
+
+      <!-- Tech stack band -->
+      <div class="tech-band" data-aos="fade-up" data-aos-delay="200">
+        <div class="tech-band-title">Integramos com as principais plataformas</div>
+
+        <!-- Trilho 1 — move para a esquerda -->
+        <div class="tech-marquee-wrap">
+          <div class="tech-marquee tech-marquee--left">
+            <div class="tech-marquee-track">
+              <div class="tech-logo"><i class="fab fa-whatsapp"></i><span>WhatsApp</span></div>
+              <div class="tech-logo"><i class="fab fa-instagram"></i><span>Instagram</span></div>
+              <div class="tech-logo"><i class="fab fa-telegram"></i><span>Telegram</span></div>
+              <div class="tech-logo"><i class="fas fa-envelope"></i><span>E-mail</span></div>
+              <div class="tech-logo"><i class="fab fa-google"></i><span>Google</span></div>
+              <div class="tech-logo"><i class="fas fa-database"></i><span>CRM</span></div>
+              <div class="tech-logo"><i class="fab fa-slack"></i><span>Slack</span></div>
+              <div class="tech-logo"><i class="fas fa-calendar"></i><span>Agenda</span></div>
+              <div class="tech-logo"><i class="fab fa-facebook"></i><span>Facebook</span></div>
+              <div class="tech-logo"><i class="fas fa-comments"></i><span>Chat</span></div>
+            </div>
+            <!-- Duplicado para loop contínuo -->
+            <div class="tech-marquee-track" aria-hidden="true">
+              <div class="tech-logo"><i class="fab fa-whatsapp"></i><span>WhatsApp</span></div>
+              <div class="tech-logo"><i class="fab fa-instagram"></i><span>Instagram</span></div>
+              <div class="tech-logo"><i class="fab fa-telegram"></i><span>Telegram</span></div>
+              <div class="tech-logo"><i class="fas fa-envelope"></i><span>E-mail</span></div>
+              <div class="tech-logo"><i class="fab fa-google"></i><span>Google</span></div>
+              <div class="tech-logo"><i class="fas fa-database"></i><span>CRM</span></div>
+              <div class="tech-logo"><i class="fab fa-slack"></i><span>Slack</span></div>
+              <div class="tech-logo"><i class="fas fa-calendar"></i><span>Agenda</span></div>
+              <div class="tech-logo"><i class="fab fa-facebook"></i><span>Facebook</span></div>
+              <div class="tech-logo"><i class="fas fa-comments"></i><span>Chat</span></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Trilho 2 — move para a direita -->
+        <div class="tech-marquee-wrap tech-marquee-wrap--second">
+          <div class="tech-marquee tech-marquee--right">
+            <div class="tech-marquee-track">
+              <div class="tech-logo tech-logo--alt"><i class="fas fa-robot"></i><span>IA Agente</span></div>
+              <div class="tech-logo tech-logo--alt"><i class="fas fa-plug"></i><span>API REST</span></div>
+              <div class="tech-logo tech-logo--alt"><i class="fab fa-youtube"></i><span>YouTube</span></div>
+              <div class="tech-logo tech-logo--alt"><i class="fas fa-store"></i><span>E-commerce</span></div>
+              <div class="tech-logo tech-logo--alt"><i class="fab fa-wordpress"></i><span>WordPress</span></div>
+              <div class="tech-logo tech-logo--alt"><i class="fas fa-file-invoice"></i><span>ERP</span></div>
+              <div class="tech-logo tech-logo--alt"><i class="fab fa-shopify"></i><span>Shopify</span></div>
+              <div class="tech-logo tech-logo--alt"><i class="fas fa-bell"></i><span>Notificações</span></div>
+              <div class="tech-logo tech-logo--alt"><i class="fas fa-map-marker-alt"></i><span>Google Maps</span></div>
+              <div class="tech-logo tech-logo--alt"><i class="fas fa-credit-card"></i><span>Pagamentos</span></div>
+            </div>
+            <!-- Duplicado para loop contínuo -->
+            <div class="tech-marquee-track" aria-hidden="true">
+              <div class="tech-logo tech-logo--alt"><i class="fas fa-robot"></i><span>IA Agente</span></div>
+              <div class="tech-logo tech-logo--alt"><i class="fas fa-plug"></i><span>API REST</span></div>
+              <div class="tech-logo tech-logo--alt"><i class="fab fa-youtube"></i><span>YouTube</span></div>
+              <div class="tech-logo tech-logo--alt"><i class="fas fa-store"></i><span>E-commerce</span></div>
+              <div class="tech-logo tech-logo--alt"><i class="fab fa-wordpress"></i><span>WordPress</span></div>
+              <div class="tech-logo tech-logo--alt"><i class="fas fa-file-invoice"></i><span>ERP</span></div>
+              <div class="tech-logo tech-logo--alt"><i class="fab fa-shopify"></i><span>Shopify</span></div>
+              <div class="tech-logo tech-logo--alt"><i class="fas fa-bell"></i><span>Notificações</span></div>
+              <div class="tech-logo tech-logo--alt"><i class="fas fa-map-marker-alt"></i><span>Google Maps</span></div>
+              <div class="tech-logo tech-logo--alt"><i class="fas fa-credit-card"></i><span>Pagamentos</span></div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ========== CTA FINAL ========== -->
+  <section id="cta-final" class="cta-section">
+    <div class="cta-glow"></div>
+    <div class="container">
+      <div class="cta-wrapper" data-aos="zoom-in">
+
+        <div class="cta-badge">
+          <span class="badge-dot badge-dot--white"></span>
+          Agente disponível agora · 24/7
+        </div>
+
+        <h2 class="cta-title">
+          Enquanto sua equipe descansa,<br />
+          <span class="gradient-text">sua IA continua trabalhando.</span>
+        </h2>
+        <p class="cta-subtitle">
+          Converse agora com nosso Agente de IA. Ele vai entender sua necessidade, apresentar as soluções certas e já agendar uma conversa com nossa equipe — tudo de forma automática.
+        </p>
+
+        <!-- Agent Chat Embed Area -->
+        <div class="agent-chat-box" id="agent-chat-box">
+
+          <!-- Avatar + Status -->
+          <div class="agent-chat-header">
+            <div class="agent-avatar-wrap">
+              <div class="agent-avatar">
+                <i class="fas fa-robot"></i>
+              </div>
+              <span class="agent-online-dot"></span>
+            </div>
+            <div class="agent-info">
+              <strong>Agente inovae.ia</strong>
+              <span><span class="agent-status-dot"></span> Online agora · Responde em segundos</span>
+            </div>
+            <div class="agent-capabilities">
+              <span><i class="fas fa-calendar-check"></i> Agendamento</span>
+              <span><i class="fas fa-comments"></i> Atendimento</span>
+              <span><i class="fas fa-chart-line"></i> Vendas</span>
+            </div>
+          </div>
+
+          <!-- GPT Maker embed slot -->
+          <div class="agent-embed-container" id="gptmaker-embed">
+            <!-- ============================================================
+                 INTEGRAÇÃO GPT MAKER
+                 Cole aqui o código de incorporação do seu agente GPT Maker.
+                 Geralmente um <script> ou <iframe> fornecido pela plataforma.
+                 Exemplo:
+                 <iframe src="https://app.gptmaker.ai/widget/SEU_AGENT_ID"
+                         width="100%" height="520"
+                         frameborder="0" allow="microphone">
+                 </iframe>
+                 ============================================================ -->
+            <div class="agent-embed-placeholder" id="embed-placeholder">
+              <div class="aep-icon">
+                <i class="fas fa-robot"></i>
+                <div class="aep-pulse"></div>
+              </div>
+              <h3>Seu Agente de IA está pronto</h3>
+              <p>Cole o código de incorporação do GPT Maker no arquivo <code>index.html</code> dentro da div <code>#gptmaker-embed</code> para ativar o chat ao vivo.</p>
+              <div class="aep-steps">
+                <div class="aep-step">
+                  <span class="aep-num">1</span>
+                  <span>Acesse o GPT Maker e abra seu agente</span>
+                </div>
+                <div class="aep-step">
+                  <span class="aep-num">2</span>
+                  <span>Vá em <strong>Publicar → Incorporar no site</strong></span>
+                </div>
+                <div class="aep-step">
+                  <span class="aep-num">3</span>
+                  <span>Copie o código e cole dentro de <code>#gptmaker-embed</code></span>
+                </div>
+              </div>
+              <button class="btn-primary btn-open-chat" id="btn-open-chat">
+                <i class="fas fa-comment-dots"></i>
+                <span>Falar com o Agente agora</span>
+              </button>
+            </div>
+          </div>
+
+        </div>
+        <!-- /agent-chat-box -->
+
+        <div class="cta-trust-bar">
+          <div class="cta-trust-item"><i class="fas fa-robot"></i> Agente IA 24/7</div>
+          <div class="cta-trust-item"><i class="fas fa-bolt"></i> Resposta imediata</div>
+          <div class="cta-trust-item"><i class="fas fa-calendar-check"></i> Agendamento automático</div>
+          <div class="cta-trust-item"><i class="fas fa-lock"></i> Conversa segura</div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== FLOATING CHAT WIDGET ========== -->
+  <div class="chat-widget" id="chat-widget" aria-label="Abrir chat com agente IA">
+    <div class="chat-widget-tooltip">
+      <span>Fale com nosso Agente de IA!</span>
+      <button class="cwt-close" id="cwt-close" aria-label="Fechar tooltip">×</button>
+    </div>
+    <button class="chat-widget-btn" id="chat-widget-btn" aria-label="Abrir chat">
+      <div class="cwb-icon cwb-icon--chat"><i class="fas fa-comment-dots"></i></div>
+      <div class="cwb-icon cwb-icon--close hidden"><i class="fas fa-times"></i></div>
+      <div class="cwb-pulse"></div>
+    </button>
+
+    <!-- Widget Panel (abre o chat do agente) -->
+    <div class="chat-widget-panel" id="chat-widget-panel">
+      <div class="cwp-header">
+        <div class="cwp-avatar">
+          <i class="fas fa-robot"></i>
+          <span class="cwp-online"></span>
+        </div>
+        <div class="cwp-info">
+          <strong>Agente inovae.ia</strong>
+          <span>Online · Responde em segundos</span>
+        </div>
+        <button class="cwp-minimize" id="cwp-minimize" aria-label="Minimizar"><i class="fas fa-chevron-down"></i></button>
+      </div>
+      <div class="cwp-body" id="cwp-body">
+        <!-- GPT Maker Widget Embed (flutuante) -->
+        <!-- ============================================================
+             INTEGRAÇÃO GPT MAKER — WIDGET FLUTUANTE
+             Cole aqui o código de widget/botão flutuante do GPT Maker
+             OU o mesmo iframe do embed acima com altura menor (~450px).
+             ============================================================ -->
+        <div class="cwp-embed-placeholder">
+          <div class="cwp-bot-msg">
+            <div class="cwp-msg-avatar"><i class="fas fa-robot"></i></div>
+            <div class="cwp-msg-bubble">
+              Olá! 👋 Sou o agente da <strong>inovae.ia</strong>.<br/>
+              Como posso ajudar sua empresa hoje?
+            </div>
+          </div>
+          <div class="cwp-options">
+            <button class="cwp-opt" onclick="document.getElementById('cta-final').scrollIntoView({behavior:'smooth'})">
+              <i class="fas fa-info-circle"></i> Conhecer soluções
+            </button>
+            <button class="cwp-opt" onclick="document.getElementById('cta-final').scrollIntoView({behavior:'smooth'})">
+              <i class="fas fa-calendar-check"></i> Agendar reunião
+            </button>
+            <button class="cwp-opt" onclick="document.getElementById('cta-final').scrollIntoView({behavior:'smooth'})">
+              <i class="fas fa-tag"></i> Ver planos e preços
+            </button>
+          </div>
+          <p class="cwp-hint">
+            <i class="fas fa-info-circle"></i>
+            Para ativar o chat em tempo real, integre o agente do GPT Maker neste componente.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ========== FOOTER ========== -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-top">
+        <div class="footer-brand">
+          <a href="#hero" class="nav-logo footer-logo nav-logo--png" aria-label="InovAê.iA">
+            <img src="images/logo-branca.png" alt="InovAê.iA" class="logo-png logo-png--footer" />
+          </a>
+          <p>Agentes de IA que trabalham para sua empresa 24 horas por dia.</p>
+          <div class="footer-socials">
+            <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+            <a href="#" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+            <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+            <a href="#" aria-label="Telegram"><i class="fab fa-telegram"></i></a>
+          </div>
+        </div>
+        <div class="footer-links-group">
+          <h4>Soluções</h4>
+          <ul>
+            <li><a href="#services">Agente de Vendas</a></li>
+            <li><a href="#services">Agente de Agendamento</a></li>
+            <li><a href="#services">Agente de Suporte</a></li>
+            <li><a href="#services">Atendimento ao Cliente</a></li>
+          </ul>
+        </div>
+        <div class="footer-links-group">
+          <h4>Empresa</h4>
+          <ul>
+            <li><a href="#diferencial">Diferencial</a></li>
+            <li><a href="#benefits">Benefícios</a></li>
+            <li><a href="#problem">Por que IA?</a></li>
+            <li><a href="#cta-final">Contato</a></li>
+          </ul>
+        </div>
+        <div class="footer-cta-group">
+          <h4>Comece agora</h4>
+          <p>Transforme seu atendimento hoje mesmo.</p>
+          <a href="#cta-final" class="btn-primary btn-sm">
+            <span>Falar com Especialista</span>
+            <i class="fas fa-arrow-right"></i>
+          </a>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2025 inovae.ia. Todos os direitos reservados.</p>
+        <p>Feito com <i class="fas fa-heart" style="color:#a855f7"></i> e Inteligência Artificial</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- JS -->
+  <script src="js/main.js"></script>
+</body>
+</html>
